@@ -9,7 +9,6 @@ body, html {
     overflow: hidden;
     font-family: Arial, sans-serif;
 }
-
 section {
     position: relative;
     display: flex;
@@ -20,12 +19,10 @@ section {
     padding: 20px;
     box-sizing: border-box;
 }
-
 article {
     text-align: center;
     position: relative;
 }
-
 .content {
     text-align: center;
     color: white;
@@ -36,7 +33,6 @@ article {
     border-radius: 10px;
     box-sizing: border-box;
 }
-
 .heart {
     position: absolute;
     width: 50px;
@@ -44,7 +40,6 @@ article {
     background: url('heart.png') no-repeat center center;
     background-size: contain;
 }
-
 .falling-hearts {
     position: absolute;
     top: 0;
@@ -52,7 +47,6 @@ article {
     height: 100%;
     pointer-events: none;
 }
-
 .falling-heart {
     position: absolute;
     width: 30px;
@@ -61,7 +55,6 @@ article {
     background-size: contain;
     animation: fall 10s infinite;
 }
-
 @keyframes fall {
     0% {
         top: -10%;
@@ -73,7 +66,6 @@ article {
         opacity: 0;
     }
 }
-
 .falling-heart:nth-child(1) { --random-x: 0.1; animation-delay: 0s; }
 .falling-heart:nth-child(2) { --random-x: 0.15; animation-delay: 1s; }
 .falling-heart:nth-child(3) { --random-x: 0.2; animation-delay: 2s; }
@@ -84,20 +76,30 @@ article {
 .falling-heart:nth-child(8) { --random-x: 0.45; animation-delay: 7s; }
 .falling-heart:nth-child(9) { --random-x: 0.5; animation-delay: 8s; }
 .falling-heart:nth-child(10) { --random-x: 0.55; animation-delay: 9s; }
-
 @media (max-width: 600px) {
     .content {
         font-size: 1.2em;
         padding: 15px;
     }
-
     .heart {
         width: 40px;
         height: 40px;
     }
-
     .falling-heart {
         width: 25px;
         height: 25px;
     }
+}
+#play-button {
+    background-color: #ff5e5e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+#play-button:hover {
+    background-color: #ff3838;
 }

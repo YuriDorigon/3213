@@ -4,15 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para meu amor</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            flex-direction: column; /* Adicionado */
+        }
+
+        article {
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px; /* Adicionado */
+        }
+
+        .content {
+            text-align: center;
+            color: white;
+            max-width: 100%;
+            font-size: 1.5em;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('heart.png') no-repeat center center;
+            background-size: contain;
+        }
+
+        .falling-hearts {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .falling-heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('heart.png') no-repeat center center;
+            background-size: contain;
+            animation: fall 10s infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                left: calc(100% * var(--random-x));
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+
+        .falling-heart:nth-child(1) { --random-x: 0.1; animation-delay: 0s; }
+        .falling-heart:nth-child(2) { --random-x: 0.15; animation-delay: 1s; }
+        .falling-heart:nth-child(3) { --random-x: 0.2; animation-delay: 2s; }
+        .falling-heart:nth-child(4) { --random-x: 0.25; animation-delay: 3s; }
+        .falling-heart:nth-child(5) { --random-x: 0.3; animation-delay: 4s; }
+        .falling-heart:nth-child(6) { --random-x: 0.35; animation-delay: 5s; }
+        .falling-heart:nth-child(7) { --random-x: 0.4; animation-delay: 6s; }
+        .falling-heart:nth-child(8) { --random-x: 0.45; animation-delay: 7s; }
+        .falling-heart:nth-child(9) { --random-x: 0.5; animation-delay: 8s; }
+        .falling-heart:nth-child(10) { --random-x: 0.55; animation-delay: 9s; }
+
+        @media (max-width: 600px) {
+            .content {
+                font-size: 1.2em;
+                padding: 15px;
+            }
+
+            .heart {
+                width: 40px;
+                height: 40px;
+            }
+
+            .falling-heart {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        #play-button {
+            background-color: #ff5e5e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #play-button:hover {
+            background-color: #ff3838;
+        }
+    </style>
 </head>
 <body>
     <section>
         <article>
-            <p class="content">Você é meu universo, meu maior bem. Eu amo todos os seus detalhes meu amor, obrigado por ser a pessoa mais incrível, compreensiva e por ter um coração gigante. Você é a pessoa mais forte que já conheci minha vida toda. Eu te amo muito mesmo. Ass. Yuri</p>
+            <p class="content">Você é meu universo, meu maior bem. Eu amo todos os seus detalhes meu amor, obrigado por ser a pessoa mais incrível, compreensiva e por ter um coração gigante. Você é a pessoa mais forte que já conheci minha vida toda. <br> <br> Eu te amo muito mesmo. Ass. <strong>Yuri</strong></p>
         </article>
+        <button id="play-button" onclick="playAudio()">Clique aqui para iniciar a música</button>
     </section>
-    <audio id="background-audio" controls autoplay loop>
+    <audio id="background-audio" loop>
         <source src="your-music-file.mp3" type="audio/mpeg">
         <source src="your-music-file.ogg" type="audio/ogg">
         Seu navegador não suporta o elemento de áudio.
@@ -27,26 +148,20 @@
         <div class="falling-heart"></div>
         <div class="falling-heart"></div>
         <div class="falling-heart"></div>
-        <div class="falling-heart"></div>
-        <div class="falling-heart"></div>
-        <div class="falling-heart"></div>
+
         <!-- Adicione mais divs com a classe "falling-heart" conforme necessário -->
     </div>
 
     <script>
-        window.addEventListener('load', function() {
+        function playAudio() {
             var audio = document.getElementById('background-audio');
             audio.volume = 0.3;
             audio.play().then(() => {
-                console.log('Autoplay successful');
+                console.log('Playback started successfully');
             }).catch(function(error) {
-                console.log('Autoplay failed:', error);
-                // Tentar novamente após um pequeno atraso
-                setTimeout(() => {
-                    audio.play().catch(err => console.log('Retry autoplay failed:', err));
-                }, 1000);
+                console.log('Playback failed:', error);
             });
-        });
+        }
     </script>
 </body>
 </html>

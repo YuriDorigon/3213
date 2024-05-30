@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para meu amor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <article>
+            <p class="content">Você é meu universo, meu maior bem. Eu amo todos os seus detalhes meu amor, obrigado por ser a pessoa mais incrível, compreensiva e por ter um coração gigante. Você é a pessoa mais forte que já conheci minha vida toda. Eu te amo muito mesmo. Ass. Yuri</p>
+        </article>
+    </section>
+    <audio id="background-audio" controls autoplay loop>
+        <source src="your-music-file.mp3" type="audio/mpeg">
+        <source src="your-music-file.ogg" type="audio/ogg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    <div class="falling-hearts">
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <div class="falling-heart"></div>
+        <!-- Adicione mais divs com a classe "falling-heart" conforme necessário -->
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            var audio = document.getElementById('background-audio');
+            audio.volume = 0.3;
+            audio.play().then(() => {
+                console.log('Autoplay successful');
+            }).catch(function(error) {
+                console.log('Autoplay failed:', error);
+                // Tentar novamente após um pequeno atraso
+                setTimeout(() => {
+                    audio.play().catch(err => console.log('Retry autoplay failed:', err));
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
